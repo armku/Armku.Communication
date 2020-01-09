@@ -67,6 +67,14 @@ namespace Armku.Communication.Modbus
             Pipline.AddLast(Bus);
         }
         /// <summary>
+        /// 输出继电器读取长度
+        /// </summary>
+        private int regCoilReadLength = 0;
+        /// <summary>
+        /// 输出继电器读取地址
+        /// </summary>
+        private int regCoilReadAddr = 0;
+        /// <summary>
         /// 读取线圈寄存器
         /// </summary>
         /// <param name="id"></param>
@@ -77,9 +85,11 @@ namespace Armku.Communication.Modbus
         {
             var buf = new byte[6];
             ReadInputAddress = addr;
-            //01 04 00 00 00 0A 70 0D
+            regCoilReadLength = len;
+            regCoilReadAddr = addr;
+            //01 02 00 00 00 0A F8 0D
             buf[0] = id;
-            buf[1] = 0x01;
+            buf[1] = 0x02;
             buf[2] = Convert.ToByte(addr >> 8);
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
@@ -311,15 +321,16 @@ namespace Armku.Communication.Modbus
 
             switch (buf[1])
             {
-                case 1:
+                case 2:
                     //输出继电器
-                    for (int i = 0; i < 8; i++)
+                    for (int i = 0; i < regCoilReadLength; i++)
                     {
-                        byte d = Convert.ToByte(1 << i);
+                        int pos = i % 8;
+                        byte d = Convert.ToByte(1 << pos);
                         if ((buf[3] & d) != 0)
-                            this.RegCoil[i] = true;
+                            this.RegCoil[regCoilReadAddr+i] = true;
                         else
-                            this.RegCoil[i] = false;
+                            this.RegCoil[regCoilReadAddr+i] = false;
                     }
                     break;
                 case 3:
