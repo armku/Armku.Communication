@@ -2,6 +2,7 @@
 using Armku.Communication.Modbus.Iterface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,14 +12,16 @@ namespace Armku.Communication.Modbus
     /// <summary>
     /// 数据封包，拆包
     /// </summary>
+    [Description("数据封包，拆包")]
     public class PackageModbus : Handler
     {
         #region IHandler
         /// <summary>
-        /// 处理发送缓冲区
+        /// 处理发送缓冲区数据
         /// </summary>
         /// <param name="buf"></param>
         /// <returns></returns>
+        [Description("处理发送缓冲区数据")]
         public override byte[] DataOutDeal(byte[] buf)
         {
             var bufout = new byte[buf.Length + 2];
@@ -30,12 +33,13 @@ namespace Armku.Communication.Modbus
                         
             return bufout;
         }
-        
+
         /// <summary>
-        /// 处理缓冲区
+        /// 处理接收缓冲区数据
         /// </summary>
         /// <param name="buf"></param>
         /// <returns></returns>
+        [Description("处理接收缓冲区数据")]
         public override byte[] DataInDeal(byte[] buf)
         {
             if (buf == null)

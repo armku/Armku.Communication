@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Armku.Communication.Iterface
 {
-    /// <summary>处理器</summary>
+    /// <summary>
+    /// 处理器
+    /// </summary>
+    [Description("处理器")]
     public interface IHandler
     {
         /// <summary>

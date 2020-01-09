@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 namespace Armku.Communication.Iterface
 {
     /// <summary>管道。进站顺序，出站逆序</summary>
+    [Description("管道")]
     public interface IPipeline 
     {
         #region 基础方法

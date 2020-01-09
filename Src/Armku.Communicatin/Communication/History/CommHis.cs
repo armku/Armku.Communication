@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ namespace Armku.Communication.History
     /// <summary>
     /// 通信值
     /// </summary>
-   public class CommValues
+    [Description("通信值")]
+    public class CommValues
     {
         /// <summary>
         /// 通信历史

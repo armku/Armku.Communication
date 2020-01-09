@@ -10,11 +10,16 @@ using System.Threading.Tasks;
 
 namespace Armku.Communication.Bus
 {
-   public class ComBus: Handler
+    /// <summary>
+    /// 总线-串口总线
+    /// </summary>
+    [Description("总线-串口总线")]
+    public class ComBus: Handler
     {
         /// <summary>
         /// 串口
         /// </summary>
+        [Description("串口")]
         public SerialPort sp = new SerialPort();
         /// <summary>
         /// 端口号
@@ -43,6 +48,10 @@ namespace Armku.Communication.Bus
                 }
             }
         }
+        /// <summary>
+        /// 打开
+        /// </summary>
+        [Description("打开")]
         public void Open()
         {
             sp.DataBits = 8;

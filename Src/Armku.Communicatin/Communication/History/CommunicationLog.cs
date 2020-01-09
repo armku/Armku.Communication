@@ -10,6 +10,7 @@ namespace Armku.Communication.History
     /// <summary>
     /// 通信日志
     /// </summary>
+    [Description("通信日志")]
     public class CommunicationLog
     {
         /// <summary>

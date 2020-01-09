@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Armku.Communication.Modbus.Iterface
 {
-   public class Packet485Helper
+    /// <summary>
+    /// CRC校验-MODBUS
+    /// </summary>
+    [Description("CRC校验-MODBUS")]
+    public class Packet485Helper
     {
         #region CRC16
         private static byte[] auchCRCHi = new byte[] {

@@ -1,22 +1,24 @@
 ﻿using Armku.Communication.Iterface;
 using Armku.Communication.History;
-using Armku.Communication.Iterface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Armku.Communication
 {
     /// <summary>
     /// 通信历史
     /// </summary>
+    [Description("通信历史")]
     public class pipComHis : Handler
     {
         /// <summary>
         /// 通信历史
         /// </summary>
+        [Description("通信历史")]
         public CommValues CommHis = new CommValues();
         #region IHandler
         /// <summary>
