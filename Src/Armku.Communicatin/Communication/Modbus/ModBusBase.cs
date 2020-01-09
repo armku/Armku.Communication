@@ -3,6 +3,7 @@ using Armku.Communication.Iterface;
 using Armku.Communication.Modbus.Iterface;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Armku.Communication.Modbus
@@ -10,19 +11,23 @@ namespace Armku.Communication.Modbus
     /// <summary>
     /// MODBUS通信基类
     /// </summary>
+    [Description(" MODBUS通信基类")]
     public class ModBusBase : Handler
     {
         /// <summary>
         /// 通信接口
         /// </summary>
+        [Description("通信接口")]
         public readonly ComBus Bus = new ComBus();
         /// <summary>
         /// 数据处理管道
         /// </summary>
+        [Description("数据处理管道")]
         public Pipeline Pipline { get; set; }
         /// <summary>
         /// 通信历史
         /// </summary>
+        [Description("通信历史")]
         public pipComHis ComHis = new pipComHis();
         /// <summary>
         /// 数组转换为浮点数
@@ -30,6 +35,7 @@ namespace Armku.Communication.Modbus
         /// <param name="values"></param>
         /// <param name="pos"></param>
         /// <returns></returns>
+        [Description("数组转换为浮点数")]
         protected float Ushorts2Float(ushort[] values, int pos)
         {
             var byts = new Byte[4];
@@ -43,6 +49,7 @@ namespace Armku.Communication.Modbus
         /// <param name="da"></param>
         /// <param name="val"></param>
         /// <param name="pos"></param>
+        [Description("浮点数转换为Ushort数组")]
         protected void Float2Ushort(float da, ref ushort[] val, int pos = 0)
         {
             Buffer.BlockCopy(BitConverter.GetBytes(da), 0, val, pos * 2, 4);
@@ -50,6 +57,7 @@ namespace Armku.Communication.Modbus
         /// <summary>
         /// 初始化
         /// </summary>
+        [Description("初始化")]
         public void Init()
         {
             Pipline = new Pipeline();
@@ -64,6 +72,7 @@ namespace Armku.Communication.Modbus
         /// <param name="id"></param>
         /// <param name="addr"></param>
         /// <param name="value"></param>
+        [Description("读取线圈寄存器")]
         public void RegCoilRead(byte id, UInt16 addr, UInt16 len)
         {
             var buf = new byte[6];
@@ -87,6 +96,7 @@ namespace Armku.Communication.Modbus
         /// <summary>
         /// 读取输入寄存器
         /// </summary>
+        [Description("读取输入寄存器")]
         public void RegInputRead(Byte id, UInt16 addr, UInt16 len)
         {
             var buf = new byte[6];
@@ -110,6 +120,7 @@ namespace Armku.Communication.Modbus
         /// <summary>
         /// 写保持寄存器
         /// </summary>
+        [Description("写保持寄存器")]
         public void RegHoildingWrite(Byte id, UInt16 addr, UInt16 len)
         {
             var buf = new byte[7 + len * 2];
@@ -142,6 +153,7 @@ namespace Armku.Communication.Modbus
         /// <summary>
         /// 读取保持寄存器
         /// </summary>
+        [Description("读取保持寄存器")]
         public void RegHoildingRead(Byte id, UInt16 addr, UInt16 len)
         {
             var buf = new byte[6];
@@ -168,6 +180,7 @@ namespace Armku.Communication.Modbus
         /// <param name="id"></param>
         /// <param name="addr"></param>
         /// <param name="value"></param>
+        [Description("设置单个线圈寄存器")]
         public void RegCoilWriteSingle(byte id, UInt16 addr)
         {
             var buf = new byte[6];
@@ -188,17 +201,28 @@ namespace Armku.Communication.Modbus
                 Pipline.DealInBuf(bufrcv);//此处为接收
             }
         }
-        
+        /// <summary>
+        /// 打开
+        /// </summary>
+        [Description("打开")]
         public void Open()
         {
             Bus.sp.Close();
             Bus.Open();
             this.Init();
         }
+        /// <summary>
+        /// 关闭
+        /// </summary>
+        [Description("关闭")]
         public void Close()
         {
             Bus.sp.Close();
         }
+        /// <summary>
+        /// 通信状态字符串
+        /// </summary>
+        [Description("通信状态字符串")]
         public String Status
         {
             get
@@ -209,7 +233,9 @@ namespace Armku.Communication.Modbus
         /// <summary>
         /// 读取的地址
         /// </summary>
-       public int ReadInputAddress { get; set; } = 0;
+        [Description("读取的地址")]
+        public int ReadInputAddress { get; set; } = 0;
+        [Description("")]
         protected byte ASCII_2_uint8(byte dat)
         {
             byte retVal = 0;
@@ -227,6 +253,7 @@ namespace Armku.Communication.Modbus
             }
             return retVal;
         }
+        [Description("")]
         protected float GetValueRaw(byte[] buf, int pos)
         {
             UInt16 b0, b1, b2, b3;
@@ -245,23 +272,27 @@ namespace Armku.Communication.Modbus
             return ret;
         }
         /// <summary>
-        /// 输入寄存器
+        /// 输入寄存器，默认长度10000
         /// </summary>
+        [Description("输入寄存器，默认长度10000")]
         public ushort[] RegInput = new ushort[10000];
         /// <summary>
-        ///保持寄存器
+        ///保持寄存器，默认长度10000
         /// </summary>
+        [Description("保持寄存器，默认长度10000")]
         public ushort[] RegHoilding = new ushort[10000];
         /// <summary>
-        ///输出继电器
+        ///输出继电器,默认长度1000
         /// </summary>
+        [Description("输出继电器,默认长度1000")]
         public Boolean[] RegCoil = new Boolean[1000];
-        
+
         /// <summary>
         /// 处理发送数据
         /// </summary>
         /// <param name="buf"></param>
         /// <returns></returns>
+        [Description("处理发送数据")]
         public override byte[] DataOutDeal(byte[] buf)
         {
             TxCnt += buf.Length;
