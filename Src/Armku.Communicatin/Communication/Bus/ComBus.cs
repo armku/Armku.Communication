@@ -17,6 +17,15 @@ namespace Armku.Communication.Bus
     public class ComBus: Handler
     {
         /// <summary>
+        /// 数据发送队列
+        /// </summary>
+        [Description("数据发送队列")]
+        private Queue<Byte[]> QueueOut = new Queue<byte[]>();
+        /// <summary>
+        /// 数据发送队列锁
+        /// </summary>
+        private Object QueueLock = new object();
+        /// <summary>
         /// 串口
         /// </summary>
         [Description("串口")]
@@ -121,11 +130,17 @@ namespace Armku.Communication.Bus
         /// <returns></returns>
         public override byte[] DataOutDeal(byte[] buf)
         {
-            if (this.sp.IsOpen)
+            lock (QueueLock)
             {
-                this.sp.Write(buf, 0, buf.Length);
-                TxCnt += buf.Length;
-                StatSend.Increment(buf.Length);
+                QueueOut.Enqueue(buf);
+                var bufout = QueueOut.Dequeue();
+
+                if (this.sp.IsOpen)
+                {
+                    this.sp.Write(bufout, 0, bufout.Length);
+                    TxCnt += bufout.Length;
+                    StatSend.Increment(bufout.Length);
+                }
             }
             return buf;
         }
