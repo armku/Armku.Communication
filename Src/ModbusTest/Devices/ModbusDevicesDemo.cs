@@ -24,8 +24,8 @@ namespace ModbusTest.Devices
         /// </summary>
         private void DealInParaUpdate()
         {
-            Zero[0] = Ushorts2Float(RegHoilding, 0);
-            Zero[1] = Ushorts2Float(RegHoilding, 6);
+            Zero[0] = Ushorts2Float(RegHoilding, 0, 0);
+            Zero[1] = Ushorts2Float(RegHoilding, 6, 3);
 
             this.Temperature[0] = Convert.ToSingle(RegInput[0] / 10.0);
             this.Temperature[1] = Convert.ToSingle(RegInput[2] / 10.0);
