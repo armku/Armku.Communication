@@ -23,6 +23,10 @@ namespace ModbusTest
         {
             comboBoxDev1_PortName.Items.Clear();
             comboBoxDev1_PortName.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
+            if(comboBoxDev1_PortName.Items.Count>0)
+            {
+                comboBoxDev1_PortName.SelectedIndex = comboBoxDev1_PortName.Items.Count - 1;
+            }
             timerRefresh.Start();
         }
 

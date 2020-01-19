@@ -53,6 +53,10 @@ namespace Armku.Communication.Modbus
                     break;
                 case 2:
                     //2:big-endian byte swap
+                    byts[0] = tmp[2];
+                    byts[1] = tmp[3];
+                    byts[2] = tmp[1];
+                    byts[3] = tmp[0];
                     break;
                 case 3:
                     //3:little-endian byte swap
