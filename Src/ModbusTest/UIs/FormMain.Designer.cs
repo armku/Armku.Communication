@@ -41,6 +41,8 @@
             this.textBoxValue = new System.Windows.Forms.TextBox();
             this.buttonRead = new System.Windows.Forms.Button();
             this.buttonWrite = new System.Windows.Forms.Button();
+            this.comboBoxDecodeType = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,7 +107,7 @@
             // 
             // buttonOpen
             // 
-            this.buttonOpen.Location = new System.Drawing.Point(98, 87);
+            this.buttonOpen.Location = new System.Drawing.Point(98, 126);
             this.buttonOpen.Margin = new System.Windows.Forms.Padding(5);
             this.buttonOpen.Name = "buttonOpen";
             this.buttonOpen.Size = new System.Drawing.Size(76, 35);
@@ -116,7 +118,7 @@
             // 
             // buttonClose
             // 
-            this.buttonClose.Location = new System.Drawing.Point(186, 87);
+            this.buttonClose.Location = new System.Drawing.Point(186, 126);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(5);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(76, 35);
@@ -127,7 +129,7 @@
             // 
             // textBoxValue
             // 
-            this.textBoxValue.Location = new System.Drawing.Point(26, 142);
+            this.textBoxValue.Location = new System.Drawing.Point(26, 209);
             this.textBoxValue.Margin = new System.Windows.Forms.Padding(5);
             this.textBoxValue.Name = "textBoxValue";
             this.textBoxValue.Size = new System.Drawing.Size(164, 29);
@@ -136,7 +138,7 @@
             // 
             // buttonRead
             // 
-            this.buttonRead.Location = new System.Drawing.Point(200, 142);
+            this.buttonRead.Location = new System.Drawing.Point(200, 209);
             this.buttonRead.Margin = new System.Windows.Forms.Padding(5);
             this.buttonRead.Name = "buttonRead";
             this.buttonRead.Size = new System.Drawing.Size(76, 35);
@@ -147,7 +149,7 @@
             // 
             // buttonWrite
             // 
-            this.buttonWrite.Location = new System.Drawing.Point(286, 142);
+            this.buttonWrite.Location = new System.Drawing.Point(286, 209);
             this.buttonWrite.Margin = new System.Windows.Forms.Padding(5);
             this.buttonWrite.Name = "buttonWrite";
             this.buttonWrite.Size = new System.Drawing.Size(76, 35);
@@ -156,11 +158,42 @@
             this.buttonWrite.UseVisualStyleBackColor = true;
             this.buttonWrite.Click += new System.EventHandler(this.buttonWrite_Click);
             // 
+            // comboBoxDecodeType
+            // 
+            this.comboBoxDecodeType.AutoCompleteCustomSource.AddRange(new string[] {
+            "0",
+            "1",
+            "2",
+            "3"});
+            this.comboBoxDecodeType.FormattingEnabled = true;
+            this.comboBoxDecodeType.Items.AddRange(new object[] {
+            "0:big-endian",
+            "1:little-endian",
+            "2:big-endian byte swap",
+            "3:little-endian byte swap"});
+            this.comboBoxDecodeType.Location = new System.Drawing.Point(98, 87);
+            this.comboBoxDecodeType.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBoxDecodeType.Name = "comboBoxDecodeType";
+            this.comboBoxDecodeType.Size = new System.Drawing.Size(287, 27);
+            this.comboBoxDecodeType.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(22, 95);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 19);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "编码";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 345);
+            this.Controls.Add(this.comboBoxDecodeType);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonWrite);
             this.Controls.Add(this.textBoxValue);
             this.Controls.Add(this.buttonRead);
@@ -198,6 +231,8 @@
         private System.Windows.Forms.TextBox textBoxValue;
         private System.Windows.Forms.Button buttonRead;
         private System.Windows.Forms.Button buttonWrite;
+        private System.Windows.Forms.ComboBox comboBoxDecodeType;
+        private System.Windows.Forms.Label label3;
     }
 }
 

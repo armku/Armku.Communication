@@ -27,6 +27,10 @@ namespace ModbusTest
             {
                 comboBoxDev1_PortName.SelectedIndex = comboBoxDev1_PortName.Items.Count - 1;
             }
+            if(comboBoxDecodeType.Items.Count>0)
+            {
+                comboBoxDecodeType.SelectedIndex = comboBoxDecodeType.Items.Count - 1;
+            }
             timerRefresh.Start();
         }
 
@@ -34,7 +38,7 @@ namespace ModbusTest
         {
             mb.Bus.PortName = comboBoxDev1_PortName.Text;
             mb.Bus.sp.BaudRate = Convert.ToInt32(textBoxDev1_BaudRate.Text);
-            mb.DcodeType = 3;
+            mb.DcodeType = comboBoxDecodeType.SelectedIndex;
             mb.Open();
         }
 
