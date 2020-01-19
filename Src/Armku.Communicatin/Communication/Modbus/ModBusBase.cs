@@ -33,7 +33,7 @@ namespace Armku.Communication.Modbus
         /// 浮点数编码方式 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap
         /// </summary>
         [Description("浮点数编码方式 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap")]
-        public int dcodeType { get; set; } = 3;
+        public int DcodeType { get; set; } = 3;
         /// <summary>
         /// 数组转换为浮点数
         /// </summary>
@@ -47,7 +47,7 @@ namespace Armku.Communication.Modbus
             var byts = new Byte[4];
             var tmp = new Byte[4];
             Buffer.BlockCopy(values, pos * 2, tmp, 0, 4);
-            switch (dcodeType)
+            switch (DcodeType)
             {
                 case 0:
                     //0:big-endian
@@ -96,7 +96,7 @@ namespace Armku.Communication.Modbus
             var tmp = new Byte[4];
             Buffer.BlockCopy(BitConverter.GetBytes(da), 0, tmp0, 0, 4);
             
-            switch (dcodeType)
+            switch (DcodeType)
             {
                 case 0:
                     //0:big-endian
