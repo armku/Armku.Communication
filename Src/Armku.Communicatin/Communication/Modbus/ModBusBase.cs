@@ -89,6 +89,8 @@ namespace Armku.Communication.Modbus
         [Description("浮点数转换为Ushort数组 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap")]
         protected void Float2Ushort(float da, ref ushort[] val, int pos = 0, int dcodeType = 3)
         {
+            var tmp = new Byte[4];
+            Buffer.BlockCopy(BitConverter.GetBytes(da), 0, tmp, 0, 4);
             switch (dcodeType)
             {
                 case 0:
@@ -102,7 +104,7 @@ namespace Armku.Communication.Modbus
                     break;
                 case 3:
                     //3:little-endian byte swap
-                    Buffer.BlockCopy(BitConverter.GetBytes(da), 0, val, pos * 2, 4);
+                    Buffer.BlockCopy(tmp, 0, val, pos * 2, 4);
                     break;
                 default:
                     break;
