@@ -34,6 +34,7 @@ namespace ModbusTest
         {
             mb.Bus.PortName = comboBoxDev1_PortName.Text;
             mb.Bus.sp.BaudRate = Convert.ToInt32(textBoxDev1_BaudRate.Text);
+            mb.DcodeType = 3;
             mb.Open();
         }
 
