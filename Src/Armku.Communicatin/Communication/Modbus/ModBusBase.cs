@@ -30,14 +30,18 @@ namespace Armku.Communication.Modbus
         [Description("通信历史")]
         public pipComHis ComHis = new pipComHis();
         /// <summary>
+        /// 浮点数编码方式 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap
+        /// </summary>
+        [Description("浮点数编码方式 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap")]
+        public int dcodeType { get; set; } = 3;
+        /// <summary>
         /// 数组转换为浮点数
         /// </summary>
         /// <param name="values"></param>
         /// <param name="pos"></param>
-        /// <param name="dcodeType">浮点数编码方式 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap</param>
         /// <returns></returns>
-        [Description("数组转换为浮点数 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap")]
-        protected float Ushorts2Float(ushort[] values, int pos,int dcodeType=3)
+        [Description("数组转换为浮点数")]
+        protected float Ushorts2Float(ushort[] values, int pos)
         {
             float ret = 0;
             var byts = new Byte[4];
@@ -85,9 +89,8 @@ namespace Armku.Communication.Modbus
         /// <param name="da"></param>
         /// <param name="val"></param>
         /// <param name="pos"></param>
-        /// <param name="dcodeType">浮点数编码方式 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap</param>
-        [Description("浮点数转换为Ushort数组 0:big-endian 1:little-endian 2:big-endian byte swap 3:little-endian byte swap")]
-        protected void Float2Ushort(float da, ref ushort[] val, int pos = 0, int dcodeType = 3)
+        [Description("浮点数转换为Ushort数组")]
+        protected void Float2Ushort(float da, ref ushort[] val, int pos = 0)
         {
             var tmp0 = new Byte[4];
             var tmp = new Byte[4];

@@ -25,8 +25,8 @@ namespace ModbusTest.Devices
         /// </summary>
         private void DealInParaUpdate()
         {
-            Zero[0] = Ushorts2Float(RegHoilding, 0, 0);
-            Zero[1] = Ushorts2Float(RegHoilding, 6, 3);
+            Zero[0] = Ushorts2Float(RegHoilding, 0);
+            Zero[1] = Ushorts2Float(RegHoilding, 6);
 
             this.Temperature[0] = Convert.ToSingle(RegInput[0] / 10.0);
             this.Temperature[1] = Convert.ToSingle(RegInput[2] / 10.0);
@@ -38,8 +38,8 @@ namespace ModbusTest.Devices
         /// </summary>
         public void DealOutParaUpdate()
         {
-            Float2Ushort(Zero[0], ref RegHoilding, 0,0);
-            Float2Ushort(Zero[1], ref RegHoilding, 6,3);
+            Float2Ushort(Zero[0], ref RegHoilding, 0);
+            Float2Ushort(Zero[1], ref RegHoilding, 6);
         }
         #region 通信处理
         /// <summary>
