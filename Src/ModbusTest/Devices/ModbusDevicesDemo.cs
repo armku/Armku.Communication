@@ -1,6 +1,7 @@
 ﻿using Armku.Communication.Modbus;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,8 +38,8 @@ namespace ModbusTest.Devices
         /// </summary>
         public void DealOutParaUpdate()
         {
-            Float2Ushort(Zero[0], ref RegHoilding, 0);
-            Float2Ushort(Zero[1], ref RegHoilding, 6);
+            Float2Ushort(Zero[0], ref RegHoilding, 0,3);
+            Float2Ushort(Zero[1], ref RegHoilding, 6,3);
         }
         #region 通信处理
         /// <summary>
@@ -54,6 +55,17 @@ namespace ModbusTest.Devices
             DealInParaUpdate();
 
             return bb;
+        }
+        /// <summary>
+        /// 处理发送数据
+        /// </summary>
+        /// <param name="buf"></param>
+        /// <returns></returns>
+        [Description("处理发送数据")]
+        public override byte[] DataOutDeal(byte[] buf)
+        {
+            DealOutParaUpdate();
+            return buf;
         }
         #endregion
     }
