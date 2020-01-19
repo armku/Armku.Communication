@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Armku.Communication", "Armku.Communicatin\Armku.Communication.csproj", "{C5177BBA-78C2-4514-A812-0191FD932A28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModbusTest", "ModbusTest\ModbusTest.csproj", "{FE96FB85-EA12-4B7A-8753-1FB5F99A6219}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C5177BBA-78C2-4514-A812-0191FD932A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5177BBA-78C2-4514-A812-0191FD932A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5177BBA-78C2-4514-A812-0191FD932A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE96FB85-EA12-4B7A-8753-1FB5F99A6219}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE96FB85-EA12-4B7A-8753-1FB5F99A6219}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE96FB85-EA12-4B7A-8753-1FB5F99A6219}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE96FB85-EA12-4B7A-8753-1FB5F99A6219}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

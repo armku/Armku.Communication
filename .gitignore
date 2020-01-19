@@ -2,3 +2,7 @@
 /Src/Armku.Communicatin/bin
 /Src/Armku.Communicatin/.vs
 /Src/.vs
+*.pdb
+/ModbusTest/ModbusTest.exe.config
+/ModbusTest/ModbusTest.exe
+/Src/ModbusTest/obj
