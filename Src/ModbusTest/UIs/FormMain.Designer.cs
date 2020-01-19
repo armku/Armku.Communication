@@ -40,6 +40,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxValue = new System.Windows.Forms.TextBox();
             this.buttonRead = new System.Windows.Forms.Button();
+            this.buttonWrite = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,11 +145,23 @@
             this.buttonRead.UseVisualStyleBackColor = true;
             this.buttonRead.Click += new System.EventHandler(this.buttonRead_Click);
             // 
+            // buttonWrite
+            // 
+            this.buttonWrite.Location = new System.Drawing.Point(286, 142);
+            this.buttonWrite.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonWrite.Name = "buttonWrite";
+            this.buttonWrite.Size = new System.Drawing.Size(76, 35);
+            this.buttonWrite.TabIndex = 14;
+            this.buttonWrite.Text = "设置";
+            this.buttonWrite.UseVisualStyleBackColor = true;
+            this.buttonWrite.Click += new System.EventHandler(this.buttonWrite_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 345);
+            this.Controls.Add(this.buttonWrite);
             this.Controls.Add(this.textBoxValue);
             this.Controls.Add(this.buttonRead);
             this.Controls.Add(this.buttonClose);
@@ -184,6 +197,7 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxValue;
         private System.Windows.Forms.Button buttonRead;
+        private System.Windows.Forms.Button buttonWrite;
     }
 }
 

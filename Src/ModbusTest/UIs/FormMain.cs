@@ -55,5 +55,11 @@ namespace ModbusTest
             }
             textBoxValue.Text =mb.Zero[0].ToString();
         }
+
+        private void buttonWrite_Click(object sender, EventArgs e)
+        {
+            mb.Zero[0] = Convert.ToSingle(textBoxValue.Text);
+            mb.RegHoildingWrite(1, 0, 8);
+        }
     }
 }
