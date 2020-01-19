@@ -41,8 +41,9 @@ namespace Armku.Communication.Modbus
         {
             float ret = 0;
             var byts = new Byte[4];
-            
-            switch(dcodeType)
+            var tmp = new Byte[4];
+            Buffer.BlockCopy(values, pos * 2, tmp, 0, 4);
+            switch (dcodeType)
             {
                 case 0:
                     //0:big-endian
@@ -55,7 +56,10 @@ namespace Armku.Communication.Modbus
                     break;
                 case 3:
                     //3:little-endian byte swap
-                    Buffer.BlockCopy(values, pos * 2, byts, 0, 4);
+                    byts[0] = tmp[0];
+                    byts[1] = tmp[1];
+                    byts[2] = tmp[2];
+                    byts[3] = tmp[3];
                     break;
                 default:
                     break;
