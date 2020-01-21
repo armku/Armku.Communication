@@ -66,7 +66,7 @@ namespace ModbusTest
         {
             if (mb.Bus.sp.IsOpen)
             {
-                mb.RegHoildingRead(1, 0, 8);//读取温度
+                mb.RegHoildingRead(1, 0, 20);//读取温度
             }
             textBoxValue.Text =mb.Zero[0].ToString();
         }

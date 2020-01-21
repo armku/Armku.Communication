@@ -22,7 +22,7 @@ namespace ModbusTest.UIs
 
         private void FormHis_Load(object sender, EventArgs e)
         {
-            var dgv = dataGridView1;
+            var dgv = dataGridViewHis;
             dgv.Rows.Clear();
             foreach(var v in mbhis.ComHis.CommHis.Values)
             {
