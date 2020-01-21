@@ -1,4 +1,5 @@
-﻿using ModbusTest.Devices;
+﻿using ModbusTest.Config;
+using ModbusTest.Devices;
 using ModbusTest.UIs;
 using System;
 using System.Collections.Generic;
@@ -22,24 +23,32 @@ namespace ModbusTest
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            comboBoxDev1_PortName.Items.Clear();
-            comboBoxDev1_PortName.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
-            if(comboBoxDev1_PortName.Items.Count>0)
+            comboBox_PortName.Items.Clear();
+            comboBox_PortName.Items.AddRange(System.IO.Ports.SerialPort.GetPortNames());
+            if(comboBox_PortName.Items.Count>0)
             {
-                comboBoxDev1_PortName.SelectedIndex = comboBoxDev1_PortName.Items.Count - 1;
+                comboBox_PortName.SelectedIndex = comboBox_PortName.Items.Count - 1;
             }
-            if(comboBoxDecodeType.Items.Count>0)
+            if(comboBox_DecodeType.Items.Count>0)
             {
-                comboBoxDecodeType.SelectedIndex = comboBoxDecodeType.Items.Count - 1;
+                comboBox_DecodeType.SelectedIndex = comboBox_DecodeType.Items.Count - 1;
             }
             timerRefresh.Start();
+            comboBox_PortName.Text=ComConfig.Current.Port ;
+            comboBox_BaudRate.Text= ComConfig.Current.Baudrate.ToString();
+            comboBox_DecodeType.SelectedIndex=ComConfig.Current.DecodeType;
         }
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            mb.Bus.PortName = comboBoxDev1_PortName.Text;
-            mb.Bus.sp.BaudRate = Convert.ToInt32(comboBox_BaudRate.Text);
-            mb.DcodeType = comboBoxDecodeType.SelectedIndex;
+            ComConfig.Current.Port= comboBox_PortName.Text;
+            ComConfig.Current.Baudrate = Convert.ToInt32(comboBox_BaudRate.Text);
+            ComConfig.Current.DecodeType = comboBox_DecodeType.SelectedIndex;
+            ComConfig.Current.Save();
+
+            mb.Bus.PortName = ComConfig.Current.Port;
+            mb.Bus.sp.BaudRate = ComConfig.Current.Baudrate;
+            mb.DcodeType = ComConfig.Current.DecodeType;
             mb.Open();
         }
 

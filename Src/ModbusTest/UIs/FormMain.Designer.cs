@@ -32,7 +32,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
-            this.comboBoxDev1_PortName = new System.Windows.Forms.ComboBox();
+            this.comboBox_PortName = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonOpen = new System.Windows.Forms.Button();
@@ -40,7 +40,7 @@
             this.textBoxValue = new System.Windows.Forms.TextBox();
             this.buttonRead = new System.Windows.Forms.Button();
             this.buttonWrite = new System.Windows.Forms.Button();
-            this.comboBoxDecodeType = new System.Windows.Forms.ComboBox();
+            this.comboBox_DecodeType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonHis = new System.Windows.Forms.Button();
             this.comboBox_BaudRate = new System.Windows.Forms.ComboBox();
@@ -70,12 +70,12 @@
             // 
             // comboBoxDev1_PortName
             // 
-            this.comboBoxDev1_PortName.FormattingEnabled = true;
-            this.comboBoxDev1_PortName.Location = new System.Drawing.Point(98, 11);
-            this.comboBoxDev1_PortName.Margin = new System.Windows.Forms.Padding(5);
-            this.comboBoxDev1_PortName.Name = "comboBoxDev1_PortName";
-            this.comboBoxDev1_PortName.Size = new System.Drawing.Size(164, 27);
-            this.comboBoxDev1_PortName.TabIndex = 10;
+            this.comboBox_PortName.FormattingEnabled = true;
+            this.comboBox_PortName.Location = new System.Drawing.Point(98, 11);
+            this.comboBox_PortName.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBox_PortName.Name = "comboBoxDev1_PortName";
+            this.comboBox_PortName.Size = new System.Drawing.Size(164, 27);
+            this.comboBox_PortName.TabIndex = 10;
             // 
             // label2
             // 
@@ -152,22 +152,22 @@
             // 
             // comboBoxDecodeType
             // 
-            this.comboBoxDecodeType.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboBox_DecodeType.AutoCompleteCustomSource.AddRange(new string[] {
             "0",
             "1",
             "2",
             "3"});
-            this.comboBoxDecodeType.FormattingEnabled = true;
-            this.comboBoxDecodeType.Items.AddRange(new object[] {
+            this.comboBox_DecodeType.FormattingEnabled = true;
+            this.comboBox_DecodeType.Items.AddRange(new object[] {
             "0:big-endian",
             "1:little-endian",
             "2:big-endian byte swap",
             "3:little-endian byte swap"});
-            this.comboBoxDecodeType.Location = new System.Drawing.Point(98, 87);
-            this.comboBoxDecodeType.Margin = new System.Windows.Forms.Padding(5);
-            this.comboBoxDecodeType.Name = "comboBoxDecodeType";
-            this.comboBoxDecodeType.Size = new System.Drawing.Size(287, 27);
-            this.comboBoxDecodeType.TabIndex = 16;
+            this.comboBox_DecodeType.Location = new System.Drawing.Point(98, 87);
+            this.comboBox_DecodeType.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBox_DecodeType.Name = "comboBoxDecodeType";
+            this.comboBox_DecodeType.Size = new System.Drawing.Size(287, 27);
+            this.comboBox_DecodeType.TabIndex = 16;
             // 
             // label3
             // 
@@ -210,13 +210,13 @@
             this.ClientSize = new System.Drawing.Size(502, 345);
             this.Controls.Add(this.comboBox_BaudRate);
             this.Controls.Add(this.buttonHis);
-            this.Controls.Add(this.comboBoxDecodeType);
+            this.Controls.Add(this.comboBox_DecodeType);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonWrite);
             this.Controls.Add(this.textBoxValue);
             this.Controls.Add(this.buttonRead);
             this.Controls.Add(this.buttonClose);
-            this.Controls.Add(this.comboBoxDev1_PortName);
+            this.Controls.Add(this.comboBox_PortName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonOpen);
@@ -239,7 +239,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timerRefresh;
-        private System.Windows.Forms.ComboBox comboBoxDev1_PortName;
+        private System.Windows.Forms.ComboBox comboBox_PortName;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonOpen;
@@ -247,7 +247,7 @@
         private System.Windows.Forms.TextBox textBoxValue;
         private System.Windows.Forms.Button buttonRead;
         private System.Windows.Forms.Button buttonWrite;
-        private System.Windows.Forms.ComboBox comboBoxDecodeType;
+        private System.Windows.Forms.ComboBox comboBox_DecodeType;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonHis;
         private System.Windows.Forms.ComboBox comboBox_BaudRate;

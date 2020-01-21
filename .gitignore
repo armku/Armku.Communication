@@ -106,3 +106,7 @@
 /ModbusTest/System.Globalization.Calendars.dll
 /ModbusTest/System.Xml.XPath.XDocument.dll
 /Src/packages
+/ModbusTest/Config
+/ModbusTest/NewLife.Core.dll
+/ModbusTest/NewLife.Core.xml
+/ModbusTest/Log
