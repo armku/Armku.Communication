@@ -33,7 +33,6 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.timerRefresh = new System.Windows.Forms.Timer(this.components);
             this.comboBoxDev1_PortName = new System.Windows.Forms.ComboBox();
-            this.textBoxDev1_BaudRate = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonOpen = new System.Windows.Forms.Button();
@@ -44,6 +43,7 @@
             this.comboBoxDecodeType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonHis = new System.Windows.Forms.Button();
+            this.comboBox_BaudRate = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,15 +76,6 @@
             this.comboBoxDev1_PortName.Name = "comboBoxDev1_PortName";
             this.comboBoxDev1_PortName.Size = new System.Drawing.Size(164, 27);
             this.comboBoxDev1_PortName.TabIndex = 10;
-            // 
-            // textBoxDev1_BaudRate
-            // 
-            this.textBoxDev1_BaudRate.Location = new System.Drawing.Point(98, 48);
-            this.textBoxDev1_BaudRate.Margin = new System.Windows.Forms.Padding(5);
-            this.textBoxDev1_BaudRate.Name = "textBoxDev1_BaudRate";
-            this.textBoxDev1_BaudRate.Size = new System.Drawing.Size(164, 29);
-            this.textBoxDev1_BaudRate.TabIndex = 9;
-            this.textBoxDev1_BaudRate.Text = "115200";
             // 
             // label2
             // 
@@ -199,11 +190,25 @@
             this.buttonHis.UseVisualStyleBackColor = true;
             this.buttonHis.Click += new System.EventHandler(this.buttonHis_Click);
             // 
+            // comboBox_BaudRate
+            // 
+            this.comboBox_BaudRate.FormattingEnabled = true;
+            this.comboBox_BaudRate.Items.AddRange(new object[] {
+            "9600",
+            "115200"});
+            this.comboBox_BaudRate.Location = new System.Drawing.Point(98, 48);
+            this.comboBox_BaudRate.Margin = new System.Windows.Forms.Padding(5);
+            this.comboBox_BaudRate.Name = "comboBox_BaudRate";
+            this.comboBox_BaudRate.Size = new System.Drawing.Size(164, 27);
+            this.comboBox_BaudRate.TabIndex = 18;
+            this.comboBox_BaudRate.Text = "9600";
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 345);
+            this.Controls.Add(this.comboBox_BaudRate);
             this.Controls.Add(this.buttonHis);
             this.Controls.Add(this.comboBoxDecodeType);
             this.Controls.Add(this.label3);
@@ -212,7 +217,6 @@
             this.Controls.Add(this.buttonRead);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.comboBoxDev1_PortName);
-            this.Controls.Add(this.textBoxDev1_BaudRate);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonOpen);
@@ -236,7 +240,6 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Timer timerRefresh;
         private System.Windows.Forms.ComboBox comboBoxDev1_PortName;
-        private System.Windows.Forms.TextBox textBoxDev1_BaudRate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonOpen;
@@ -247,6 +250,7 @@
         private System.Windows.Forms.ComboBox comboBoxDecodeType;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonHis;
+        private System.Windows.Forms.ComboBox comboBox_BaudRate;
     }
 }
 

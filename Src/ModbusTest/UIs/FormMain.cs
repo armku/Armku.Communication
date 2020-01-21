@@ -38,7 +38,7 @@ namespace ModbusTest
         private void buttonOpen_Click(object sender, EventArgs e)
         {
             mb.Bus.PortName = comboBoxDev1_PortName.Text;
-            mb.Bus.sp.BaudRate = Convert.ToInt32(textBoxDev1_BaudRate.Text);
+            mb.Bus.sp.BaudRate = Convert.ToInt32(comboBox_BaudRate.Text);
             mb.DcodeType = comboBoxDecodeType.SelectedIndex;
             mb.Open();
         }
