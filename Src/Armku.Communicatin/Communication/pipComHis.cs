@@ -46,7 +46,7 @@ namespace Armku.Communication
         {
             var ch = new CommunicationLog
             {
-                ComDirect = 0,
+                ComDirect = 1,
                 ValueByte = buf
             };
             this.CommHis.Add(ch);
