@@ -173,7 +173,7 @@ namespace Armku.Communication.Modbus
             buf[5] = Convert.ToByte(len & 0xFF);
             Pipline.DealOutBuf(buf);
 
-            System.Threading.Thread.Sleep(50);
+            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
             var bufrcv = Bus.Recv();
             if (bufrcv != null && bufrcv.Length != 0)
             {
@@ -197,7 +197,7 @@ namespace Armku.Communication.Modbus
             buf[5] = Convert.ToByte(len & 0xFF);
             Pipline.DealOutBuf(buf);
 
-            System.Threading.Thread.Sleep(50);
+            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
             var bufrcv = Bus.Recv();
             if (bufrcv != null && bufrcv.Length != 0)
             {
@@ -230,11 +230,35 @@ namespace Armku.Communication.Modbus
 
             Pipline.DealOutBuf(buf);
 
-            System.Threading.Thread.Sleep(50);
+            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
             var bufrcv = Bus.Recv();
             if (bufrcv != null && bufrcv.Length != 0)
             {
                 Pipline.DealInBuf(bufrcv);//此处为接收
+            }
+        }
+        /// <summary>
+        /// 数据发送接收延时时间-毫秒
+        /// </summary>
+        public int SleepMicroSeconds
+        {
+            get
+            {
+                int ret = 50;
+
+                switch(this.Bus.sp.BaudRate)
+                {
+                    case 9600:
+                        ret = 100;
+                        break;
+                    case 115200:
+                        ret = 50;
+                        break;
+                    default:
+                        break;
+                }
+
+                return ret;
             }
         }
         /// <summary>
@@ -254,7 +278,7 @@ namespace Armku.Communication.Modbus
             buf[5] = Convert.ToByte(len & 0xFF);
             Pipline.DealOutBuf(buf);
 
-            System.Threading.Thread.Sleep(50);
+            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
             var bufrcv = Bus.Recv();
             if (bufrcv != null && bufrcv.Length != 0)
             {
@@ -281,7 +305,7 @@ namespace Armku.Communication.Modbus
             buf[5] = 0X00;
             Pipline.DealOutBuf(buf);
 
-            System.Threading.Thread.Sleep(50);
+            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
             var bufrcv = Bus.Recv();
             if (bufrcv != null && bufrcv.Length != 0)
             {
