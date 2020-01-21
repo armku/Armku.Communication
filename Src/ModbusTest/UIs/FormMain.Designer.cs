@@ -43,6 +43,7 @@
             this.buttonWrite = new System.Windows.Forms.Button();
             this.comboBoxDecodeType = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.buttonHis = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,11 +188,23 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "编码";
             // 
+            // buttonHis
+            // 
+            this.buttonHis.Location = new System.Drawing.Point(395, 209);
+            this.buttonHis.Margin = new System.Windows.Forms.Padding(5);
+            this.buttonHis.Name = "buttonHis";
+            this.buttonHis.Size = new System.Drawing.Size(93, 35);
+            this.buttonHis.TabIndex = 17;
+            this.buttonHis.Text = "通信历史";
+            this.buttonHis.UseVisualStyleBackColor = true;
+            this.buttonHis.Click += new System.EventHandler(this.buttonHis_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 345);
+            this.Controls.Add(this.buttonHis);
             this.Controls.Add(this.comboBoxDecodeType);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonWrite);
@@ -205,7 +218,7 @@
             this.Controls.Add(this.buttonOpen);
             this.Controls.Add(this.statusStrip1);
             this.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModbusTest";
@@ -233,6 +246,7 @@
         private System.Windows.Forms.Button buttonWrite;
         private System.Windows.Forms.ComboBox comboBoxDecodeType;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button buttonHis;
     }
 }
 

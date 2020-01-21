@@ -50,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Devices\ModbusDevicesDemo.cs" />
+    <Compile Include="UIs\FormHis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIs\FormHis.Designer.cs">
+      <DependentUpon>FormHis.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIs\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UIs\FormHis.resx">
+      <DependentUpon>FormHis.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UIs\FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
     </EmbeddedResource>

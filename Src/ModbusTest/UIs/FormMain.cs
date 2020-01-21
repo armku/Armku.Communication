@@ -1,4 +1,5 @@
 ﻿using ModbusTest.Devices;
+using ModbusTest.UIs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,6 +66,15 @@ namespace ModbusTest
         {
             mb.Zero[0] = Convert.ToSingle(textBoxValue.Text);
             mb.RegHoildingWrite(1, 0, 8);
+        }
+        /// <summary>
+        /// 通信历史
+        /// </summary>
+        FormHis form;
+        private void buttonHis_Click(object sender, EventArgs e)
+        {
+            form = new FormHis(ref mb)               ;
+            form.Show();   
         }
     }
 }
