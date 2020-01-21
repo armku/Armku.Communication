@@ -33,7 +33,8 @@ namespace ModbusTest.UIs
                 var v = mbhis.ComHis.CommHis.Values[i];
                 dgv.Rows[i].Cells[0].Value=v.TimePoint.ToString("HH:mm:ss");
                 dgv.Rows[i].Cells[1].Value = v.ComDirectStr;
-                dgv.Rows[i].Cells[2].Value = v.ValueHexStr;
+                dgv.Rows[i].Cells[2].Value = v.ValueByte.Length.ToString(); 
+                dgv.Rows[i].Cells[3].Value = v.ValueHexStr;
             }
         }
     }
