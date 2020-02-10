@@ -15,6 +15,11 @@ namespace Armku.Communication.Modbus
     public class ModBusBase : Handler
     {
         /// <summary>
+        /// 发送队列，解决多线程冲突问题
+        /// </summary>
+        private Queue<Byte[]> QueueWrite = new Queue<byte[]>();
+
+        /// <summary>
         /// 通信接口
         /// </summary>
         [Description("通信接口")]
