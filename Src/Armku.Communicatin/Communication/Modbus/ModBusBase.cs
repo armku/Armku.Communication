@@ -210,6 +210,25 @@ namespace Armku.Communication.Modbus
             }
         }
         /// <summary>
+        /// 处理发送缓冲区队列
+        /// </summary>
+        private void DealOutBuf()
+        {
+            if (this.QueueWrite.Count == 0)
+                return;
+
+            var buf = this.QueueWrite.Dequeue();
+
+            Pipline.DealOutBuf(buf);
+
+            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
+            var bufrcv = Bus.Recv();
+            if (bufrcv != null && bufrcv.Length != 0)
+            {
+                Pipline.DealInBuf(bufrcv);//此处为接收
+            }
+        }
+        /// <summary>
         /// 写保持寄存器
         /// </summary>
         [Description("写保持寄存器")]
@@ -231,16 +250,8 @@ namespace Armku.Communication.Modbus
                 buf[7 + i * 2] = Convert.ToByte(RegHoilding[addr+i] >> 8);
                 buf[8 + i * 2] = Convert.ToByte(RegHoilding[addr+i] & 0xff);
             }
-
-
-            Pipline.DealOutBuf(buf);
-
-            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
-            var bufrcv = Bus.Recv();
-            if (bufrcv != null && bufrcv.Length != 0)
-            {
-                Pipline.DealInBuf(bufrcv);//此处为接收
-            }
+            this.QueueWrite.Enqueue(buf);
+            DealOutBuf();
         }
         /// <summary>
         /// 数据发送接收延时时间-毫秒
