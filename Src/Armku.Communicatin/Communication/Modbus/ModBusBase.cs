@@ -176,14 +176,8 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            Pipline.DealOutBuf(buf);
-
-            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
-            var bufrcv = Bus.Recv();
-            if (bufrcv != null && bufrcv.Length != 0)
-            {
-                Pipline.DealInBuf(bufrcv);//此处为接收
-            }
+            this.QueueWrite.Enqueue(buf);
+            DealOutBuf();
         }
         /// <summary>
         /// 读取输入寄存器
@@ -200,14 +194,8 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            Pipline.DealOutBuf(buf);
-
-            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
-            var bufrcv = Bus.Recv();
-            if (bufrcv != null && bufrcv.Length != 0)
-            {
-                Pipline.DealInBuf(bufrcv);//此处为接收
-            }
+            this.QueueWrite.Enqueue(buf);
+            DealOutBuf();
         }
         /// <summary>
         /// 处理发送缓冲区队列
@@ -292,14 +280,8 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            Pipline.DealOutBuf(buf);
-
-            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
-            var bufrcv = Bus.Recv();
-            if (bufrcv != null && bufrcv.Length != 0)
-            {
-                Pipline.DealInBuf(bufrcv);//此处为接收
-            }
+            this.QueueWrite.Enqueue(buf);
+            DealOutBuf();
         }
         /// <summary>
         /// 设置单个线圈寄存器
@@ -319,14 +301,8 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(this.RegCoil[addr] ? 0XFF : 0X00);
             buf[5] = 0X00;
-            Pipline.DealOutBuf(buf);
-
-            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
-            var bufrcv = Bus.Recv();
-            if (bufrcv != null && bufrcv.Length != 0)
-            {
-                Pipline.DealInBuf(bufrcv);//此处为接收
-            }
+            this.QueueWrite.Enqueue(buf);
+            DealOutBuf();
         }
         /// <summary>
         /// 打开
