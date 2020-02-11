@@ -213,7 +213,7 @@ namespace Armku.Communication.Modbus
         /// <summary>
         /// 处理发送缓冲区队列
         /// </summary>
-        private void DealOutBuf()
+        public void DealOutBuf()
         {
             if (this.Pipline.QueueWrite.Count == 0)
                 return;
