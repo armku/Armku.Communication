@@ -159,6 +159,23 @@ namespace Armku.Communication.Iterface
             }
             TMLastSend = DateTime.Now;
         }
+        /// <summary>
+        /// 通信发送进程
+        /// </summary>
+        public void WorkMethod()
+        {
+            while (true)
+            {
+                lock (syncObj)
+                {
+                    DealOutBuf();
+                    while ((DateTime.Now - TMLastSend).TotalMilliseconds < 10)
+                    {
+                        System.Threading.Thread.Sleep(10);
+                    }
+                }
+            }
+        }
         #endregion
     }
 }

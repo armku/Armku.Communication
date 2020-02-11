@@ -16,7 +16,7 @@ namespace Armku.Communication.Modbus
     {
         public ModBusBase()
         {
-            Pipline. trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(WorkMethod));
+            Pipline.trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(Pipline.WorkMethod));
 
         }
         
@@ -191,24 +191,6 @@ namespace Armku.Communication.Modbus
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
             this.Pipline.Enqueue(buf);
-        }
-
-        /// <summary>
-        /// 通信发送进程
-        /// </summary>
-        private void WorkMethod()
-        {
-            while (true)
-            {
-                lock (Pipline.syncObj)
-                {
-                  Pipline.  DealOutBuf();
-                    while ((DateTime.Now - Pipline.TMLastSend).TotalMilliseconds < 10)
-                    {
-                        System.Threading.Thread.Sleep(10);
-                    }
-                }
-            }
         }
         
         /// <summary>
