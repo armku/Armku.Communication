@@ -9,6 +9,11 @@ namespace Armku.Communication.Iterface
     /// <summary>管道。进站顺序，出站逆序</summary>
     public class PipelineBase : IPipeline
     {
+        public PipelineBase()
+        {
+            trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(WorkMethod));
+        }
+
         /// <summary>
         /// 处理列表
         /// </summary>

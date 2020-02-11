@@ -16,7 +16,7 @@ namespace Armku.Communication.Modbus
     {
         public ModBusBase()
         {
-            Pipline.trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(Pipline.WorkMethod));
+            
 
         }
         
@@ -138,7 +138,6 @@ namespace Armku.Communication.Modbus
         [Description("初始化")]
         public void Init()
         {
-            //Pipline = new PipelineBase();
             Pipline.AddLast(this);
             Pipline.AddLast(new PackageModbus());
             Pipline.AddLast(this.ComHis);
