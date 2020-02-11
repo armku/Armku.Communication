@@ -138,6 +138,27 @@ namespace Armku.Communication.Iterface
         /// 上次发送时间
         /// </summary>
         public DateTime TMLastSend = DateTime.Now;
+
+        /// <summary>
+        /// 处理发送缓冲区队列
+        /// </summary>
+        public void DealOutBuf()
+        {
+            if (this.QueueWrite.Count == 0)
+                return;
+
+            var buf = this.QueueWrite.Dequeue();
+
+            DealOutBuf(buf);
+
+            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
+            var bufrcv = Bus.Recv();
+            if (bufrcv != null && bufrcv.Length != 0)
+            {
+                DealInBuf(bufrcv);//此处为接收
+            }
+            TMLastSend = DateTime.Now;
+        }
         #endregion
     }
 }

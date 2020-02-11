@@ -202,7 +202,7 @@ namespace Armku.Communication.Modbus
             {
                 lock (Pipline.syncObj)
                 {
-                    DealOutBuf();
+                  Pipline.  DealOutBuf();
                     while ((DateTime.Now - Pipline.TMLastSend).TotalMilliseconds < 10)
                     {
                         System.Threading.Thread.Sleep(10);
@@ -210,26 +210,7 @@ namespace Armku.Communication.Modbus
                 }
             }
         }
-        /// <summary>
-        /// 处理发送缓冲区队列
-        /// </summary>
-        public void DealOutBuf()
-        {
-            if (this.Pipline.QueueWrite.Count == 0)
-                return;
-                        
-            var buf = this.Pipline.QueueWrite.Dequeue();
-
-            Pipline.DealOutBuf(buf);
-
-            System.Threading.Thread.Sleep(this.Pipline.SleepMicroSeconds);
-            var bufrcv = Pipline.Bus.Recv();
-            if (bufrcv != null && bufrcv.Length != 0)
-            {
-                Pipline.DealInBuf(bufrcv);//此处为接收
-            }
-            Pipline.TMLastSend = DateTime.Now;
-        }
+        
         /// <summary>
         /// 写保持寄存器
         /// </summary>
