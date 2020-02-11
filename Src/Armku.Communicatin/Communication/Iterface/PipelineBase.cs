@@ -12,6 +12,7 @@ namespace Armku.Communication.Iterface
         public PipelineBase()
         {
             trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(WorkMethod));
+            trCommTx.Start();
         }
 
         /// <summary>
@@ -138,7 +139,7 @@ namespace Armku.Communication.Iterface
         /// <summary>
         /// 通信发送线程
         /// </summary>
-        public System.Threading.Thread trCommTx;
+        private System.Threading.Thread trCommTx;
         /// <summary>
         /// 上次发送时间
         /// </summary>

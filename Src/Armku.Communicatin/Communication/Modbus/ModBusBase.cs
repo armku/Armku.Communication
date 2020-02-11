@@ -142,7 +142,7 @@ namespace Armku.Communication.Modbus
             Pipline.AddLast(new PackageModbus());
             Pipline.AddLast(this.ComHis);
             //Pipline.AddLast(Bus);
-            Pipline.trCommTx.Start();
+            
         }
         /// <summary>
         /// 输出继电器读取长度
