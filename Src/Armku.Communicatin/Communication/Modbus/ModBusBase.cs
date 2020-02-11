@@ -16,25 +16,10 @@ namespace Armku.Communication.Modbus
     {
         public ModBusBase()
         {
-            trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(WorkMethod));
+            Pipline. trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(WorkMethod));
 
         }
-        /// <summary>
-        /// 发送队列，解决多线程冲突问题
-        /// </summary>
-        private Queue<Byte[]> QueueWrite = new Queue<byte[]>();
-        /// <summary>
-        /// 同步锁,用于底层通信
-        /// </summary>
-        private Object syncObj = new object();
-        /// <summary>
-        /// 通信发送线程
-        /// </summary>
-       private System.Threading.Thread trCommTx;
-        /// <summary>
-        /// 上次发送时间
-        /// </summary>
-        public DateTime TMLastSend = DateTime.Now;
+        
         /// <summary>
         /// 数据处理管道
         /// </summary>
@@ -158,7 +143,7 @@ namespace Armku.Communication.Modbus
             Pipline.AddLast(new PackageModbus());
             Pipline.AddLast(this.ComHis);
             //Pipline.AddLast(Bus);
-            trCommTx.Start();
+            Pipline.trCommTx.Start();
         }
         /// <summary>
         /// 输出继电器读取长度
@@ -188,7 +173,7 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            this.QueueWrite.Enqueue(buf);
+            this.Pipline.QueueWrite.Enqueue(buf);
         }
         /// <summary>
         /// 读取输入寄存器
@@ -205,7 +190,7 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            this.QueueWrite.Enqueue(buf);
+            this.Pipline.QueueWrite.Enqueue(buf);
         }
 
         /// <summary>
@@ -215,10 +200,10 @@ namespace Armku.Communication.Modbus
         {
             while (true)
             {
-                lock (syncObj)
+                lock (Pipline.syncObj)
                 {
                     DealOutBuf();
-                    while ((DateTime.Now - TMLastSend).TotalMilliseconds < 10)
+                    while ((DateTime.Now - Pipline.TMLastSend).TotalMilliseconds < 10)
                     {
                         System.Threading.Thread.Sleep(10);
                     }
@@ -230,10 +215,10 @@ namespace Armku.Communication.Modbus
         /// </summary>
         private void DealOutBuf()
         {
-            if (this.QueueWrite.Count == 0)
+            if (this.Pipline.QueueWrite.Count == 0)
                 return;
                         
-            var buf = this.QueueWrite.Dequeue();
+            var buf = this.Pipline.QueueWrite.Dequeue();
 
             Pipline.DealOutBuf(buf);
 
@@ -243,7 +228,7 @@ namespace Armku.Communication.Modbus
             {
                 Pipline.DealInBuf(bufrcv);//此处为接收
             }
-            TMLastSend = DateTime.Now;
+            Pipline.TMLastSend = DateTime.Now;
         }
         /// <summary>
         /// 写保持寄存器
@@ -267,7 +252,7 @@ namespace Armku.Communication.Modbus
                 buf[7 + i * 2] = Convert.ToByte(RegHoilding[addr+i] >> 8);
                 buf[8 + i * 2] = Convert.ToByte(RegHoilding[addr+i] & 0xff);
             }
-            this.QueueWrite.Enqueue(buf);
+            this.Pipline.QueueWrite.Enqueue(buf);
         }
        
         /// <summary>
@@ -285,7 +270,7 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            this.QueueWrite.Enqueue(buf);
+            this.Pipline.QueueWrite.Enqueue(buf);
         }
         /// <summary>
         /// 设置单个线圈寄存器
@@ -305,7 +290,7 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(this.RegCoil[addr] ? 0XFF : 0X00);
             buf[5] = 0X00;
-            this.QueueWrite.Enqueue(buf);
+            this.Pipline.QueueWrite.Enqueue(buf);
         }
         /// <summary>
         /// 打开

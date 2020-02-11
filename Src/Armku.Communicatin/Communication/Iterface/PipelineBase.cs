@@ -118,6 +118,22 @@ namespace Armku.Communication.Iterface
             }
             this.Bus.DataOutDeal(buf);
         }
+        /// <summary>
+        /// 发送队列，解决多线程冲突问题
+        /// </summary>
+        public Queue<Byte[]> QueueWrite = new Queue<byte[]>();
+        /// <summary>
+        /// 同步锁,用于底层通信
+        /// </summary>
+        public Object syncObj = new object();
+        /// <summary>
+        /// 通信发送线程
+        /// </summary>
+        public System.Threading.Thread trCommTx;
+        /// <summary>
+        /// 上次发送时间
+        /// </summary>
+        public DateTime TMLastSend = DateTime.Now;
         #endregion
     }
 }
