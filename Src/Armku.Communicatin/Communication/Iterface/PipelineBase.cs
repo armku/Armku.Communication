@@ -131,11 +131,11 @@ namespace Armku.Communication.Iterface
         /// <summary>
         /// 发送队列，解决多线程冲突问题
         /// </summary>
-        public Queue<Byte[]> QueueWrite = new Queue<byte[]>();
+        private Queue<Byte[]> QueueWrite = new Queue<byte[]>();
         /// <summary>
         /// 同步锁,用于底层通信
         /// </summary>
-        public Object syncObj = new object();
+        private Object syncObj = new object();
         /// <summary>
         /// 通信发送线程
         /// </summary>
@@ -143,12 +143,12 @@ namespace Armku.Communication.Iterface
         /// <summary>
         /// 上次发送时间
         /// </summary>
-        public DateTime TMLastSend = DateTime.Now;
+        private DateTime TMLastSend = DateTime.Now;
 
         /// <summary>
         /// 处理发送缓冲区队列
         /// </summary>
-        public void DealOutBuf()
+        private void DealOutBuf()
         {
             if (this.QueueWrite.Count == 0)
                 return;
@@ -168,7 +168,7 @@ namespace Armku.Communication.Iterface
         /// <summary>
         /// 通信发送进程
         /// </summary>
-        public void WorkMethod()
+        private void WorkMethod()
         {
             while (true)
             {
