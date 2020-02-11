@@ -118,6 +118,10 @@ namespace Armku.Communication.Iterface
             }
             this.Bus.DataOutDeal(buf);
         }
+        public void Enqueue(Byte[] buf)
+        {
+            this.QueueWrite.Enqueue(buf);
+        }
         /// <summary>
         /// 发送队列，解决多线程冲突问题
         /// </summary>

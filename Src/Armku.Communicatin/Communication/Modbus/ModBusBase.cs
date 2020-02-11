@@ -173,7 +173,7 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            this.Pipline.QueueWrite.Enqueue(buf);
+            this.Pipline.Enqueue(buf);
         }
         /// <summary>
         /// 读取输入寄存器
@@ -190,7 +190,7 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            this.Pipline.QueueWrite.Enqueue(buf);
+            this.Pipline.Enqueue(buf);
         }
 
         /// <summary>
@@ -252,7 +252,7 @@ namespace Armku.Communication.Modbus
                 buf[7 + i * 2] = Convert.ToByte(RegHoilding[addr+i] >> 8);
                 buf[8 + i * 2] = Convert.ToByte(RegHoilding[addr+i] & 0xff);
             }
-            this.Pipline.QueueWrite.Enqueue(buf);
+            this.Pipline.Enqueue(buf);
         }
        
         /// <summary>
@@ -270,7 +270,7 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
-            this.Pipline.QueueWrite.Enqueue(buf);
+            this.Pipline.Enqueue(buf);
         }
         /// <summary>
         /// 设置单个线圈寄存器
@@ -290,7 +290,7 @@ namespace Armku.Communication.Modbus
             buf[3] = Convert.ToByte(addr & 0xFF);
             buf[4] = Convert.ToByte(this.RegCoil[addr] ? 0XFF : 0X00);
             buf[5] = 0X00;
-            this.Pipline.QueueWrite.Enqueue(buf);
+            this.Pipline.Enqueue(buf);
         }
         /// <summary>
         /// 打开
