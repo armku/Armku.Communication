@@ -16,8 +16,18 @@ namespace Armku.Communication.Modbus
     {
         public ModBusBase()
         {
-            
-
+            for(int i=0;i<RegCoil.Length;i++)
+            {
+                RegCoil[i] = false;
+            }
+            for(int i=0;i<RegInput.Length;i++)
+            {
+                RegInput[i] = 0;
+            }
+            for(int i=0;i<RegHoilding.Length;i++)
+            {
+                RegHoilding[i]= 0;
+            }
         }
         
         /// <summary>

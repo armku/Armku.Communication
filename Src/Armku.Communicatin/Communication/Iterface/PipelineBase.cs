@@ -126,7 +126,10 @@ namespace Armku.Communication.Iterface
         }
         public void Enqueue(Byte[] buf)
         {
-            this.QueueWrite.Enqueue(buf);
+            lock (syncObj)
+            {
+                this.QueueWrite.Enqueue(buf);
+            }
         }
         /// <summary>
         /// 发送队列，解决多线程冲突问题
