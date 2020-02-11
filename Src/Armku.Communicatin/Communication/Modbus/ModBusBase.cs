@@ -14,21 +14,32 @@ namespace Armku.Communication.Modbus
     [Description(" MODBUS通信基类")]
     public class ModBusBase : Handler
     {
+        public ModBusBase()
+        {
+            trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(WorkMethod));
+
+        }
         /// <summary>
         /// 发送队列，解决多线程冲突问题
         /// </summary>
         private Queue<Byte[]> QueueWrite = new Queue<byte[]>();
-
         /// <summary>
-        /// 通信接口
+        /// 同步锁,用于底层通信
         /// </summary>
-        [Description("通信接口")]
-        public readonly ComBus Bus = new ComBus();
+        private Object syncObj = new object();
+        /// <summary>
+        /// 通信发送线程
+        /// </summary>
+       private System.Threading.Thread trCommTx;
+        /// <summary>
+        /// 上次发送时间
+        /// </summary>
+        public DateTime TMLastSend = DateTime.Now;
         /// <summary>
         /// 数据处理管道
         /// </summary>
         [Description("数据处理管道")]
-        public Pipeline Pipline { get; set; }
+        public PipelineBase Pipline { get; set; } = new PipelineBase();
         /// <summary>
         /// 通信历史
         /// </summary>
@@ -142,11 +153,12 @@ namespace Armku.Communication.Modbus
         [Description("初始化")]
         public void Init()
         {
-            Pipline = new Pipeline();
+            //Pipline = new PipelineBase();
             Pipline.AddLast(this);
             Pipline.AddLast(new PackageModbus());
             Pipline.AddLast(this.ComHis);
-            Pipline.AddLast(Bus);
+            //Pipline.AddLast(Bus);
+            trCommTx.Start();
         }
         /// <summary>
         /// 输出继电器读取长度
@@ -177,7 +189,6 @@ namespace Armku.Communication.Modbus
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
             this.QueueWrite.Enqueue(buf);
-            DealOutBuf();
         }
         /// <summary>
         /// 读取输入寄存器
@@ -195,7 +206,24 @@ namespace Armku.Communication.Modbus
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
             this.QueueWrite.Enqueue(buf);
-            DealOutBuf();
+        }
+
+        /// <summary>
+        /// 通信发送进程
+        /// </summary>
+        private void WorkMethod()
+        {
+            while (true)
+            {
+                lock (syncObj)
+                {
+                    DealOutBuf();
+                    while ((DateTime.Now - TMLastSend).TotalMilliseconds < 10)
+                    {
+                        System.Threading.Thread.Sleep(10);
+                    }
+                }
+            }
         }
         /// <summary>
         /// 处理发送缓冲区队列
@@ -204,17 +232,18 @@ namespace Armku.Communication.Modbus
         {
             if (this.QueueWrite.Count == 0)
                 return;
-
+                        
             var buf = this.QueueWrite.Dequeue();
 
             Pipline.DealOutBuf(buf);
 
-            System.Threading.Thread.Sleep(this.SleepMicroSeconds);
-            var bufrcv = Bus.Recv();
+            System.Threading.Thread.Sleep(this.Pipline.SleepMicroSeconds);
+            var bufrcv = Pipline.Bus.Recv();
             if (bufrcv != null && bufrcv.Length != 0)
             {
                 Pipline.DealInBuf(bufrcv);//此处为接收
             }
+            TMLastSend = DateTime.Now;
         }
         /// <summary>
         /// 写保持寄存器
@@ -239,32 +268,8 @@ namespace Armku.Communication.Modbus
                 buf[8 + i * 2] = Convert.ToByte(RegHoilding[addr+i] & 0xff);
             }
             this.QueueWrite.Enqueue(buf);
-            DealOutBuf();
         }
-        /// <summary>
-        /// 数据发送接收延时时间-毫秒
-        /// </summary>
-        public int SleepMicroSeconds
-        {
-            get
-            {
-                int ret = 50;
-
-                switch(this.Bus.sp.BaudRate)
-                {
-                    case 9600:
-                        ret = 100;
-                        break;
-                    case 115200:
-                        ret = 50;
-                        break;
-                    default:
-                        break;
-                }
-
-                return ret;
-            }
-        }
+       
         /// <summary>
         /// 读取保持寄存器
         /// </summary>
@@ -281,7 +286,6 @@ namespace Armku.Communication.Modbus
             buf[4] = Convert.ToByte(len >> 8);
             buf[5] = Convert.ToByte(len & 0xFF);
             this.QueueWrite.Enqueue(buf);
-            DealOutBuf();
         }
         /// <summary>
         /// 设置单个线圈寄存器
@@ -302,7 +306,6 @@ namespace Armku.Communication.Modbus
             buf[4] = Convert.ToByte(this.RegCoil[addr] ? 0XFF : 0X00);
             buf[5] = 0X00;
             this.QueueWrite.Enqueue(buf);
-            DealOutBuf();
         }
         /// <summary>
         /// 打开
@@ -310,8 +313,8 @@ namespace Armku.Communication.Modbus
         [Description("打开")]
         public void Open()
         {
-            Bus.sp.Close();
-            Bus.Open();
+            Pipline.Bus.sp.Close();
+            Pipline.Bus.Open();
             this.Init();
         }
         /// <summary>
@@ -320,7 +323,7 @@ namespace Armku.Communication.Modbus
         [Description("关闭")]
         public void Close()
         {
-            Bus.sp.Close();
+            Pipline.Bus.sp.Close();
         }
         /// <summary>
         /// 通信状态字符串
@@ -330,7 +333,7 @@ namespace Armku.Communication.Modbus
         {
             get
             {
-                return Bus.Status;
+                return Pipline.Bus.Status;
             }
         }
         /// <summary>
