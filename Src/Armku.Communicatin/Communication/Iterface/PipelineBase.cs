@@ -126,19 +126,12 @@ namespace Armku.Communication.Iterface
         }
         public void Enqueue(Byte[] buf)
         {
-            lock (syncObj)
-            {
-                this.QueueWrite.Enqueue(buf);
-            }
+            this.QueueWrite.Enqueue(buf);
         }
         /// <summary>
         /// 发送队列，解决多线程冲突问题
         /// </summary>
-        private Queue<Byte[]> QueueWrite = new Queue<byte[]>();
-        /// <summary>
-        /// 同步锁,用于底层通信
-        /// </summary>
-        private Object syncObj = new object();
+        private QueueSafe<Byte[]> QueueWrite = new QueueSafe<byte[]>();
         /// <summary>
         /// 通信发送线程
         /// </summary>
@@ -175,13 +168,10 @@ namespace Armku.Communication.Iterface
         {
             while (true)
             {
-                lock (syncObj)
+                DealOutBuf();
+                while ((DateTime.Now - TMLastSend).TotalMilliseconds < 10)
                 {
-                    DealOutBuf();
-                    while ((DateTime.Now - TMLastSend).TotalMilliseconds < 10)
-                    {
-                        System.Threading.Thread.Sleep(10);
-                    }
+                    System.Threading.Thread.Sleep(10);
                 }
             }
         }
