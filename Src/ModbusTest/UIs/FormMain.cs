@@ -46,8 +46,8 @@ namespace ModbusTest
             ComConfig.Current.DecodeType = comboBox_DecodeType.SelectedIndex;
             ComConfig.Current.Save();
 
-            mb.Bus.PortName = ComConfig.Current.Port;
-            mb.Bus.sp.BaudRate = ComConfig.Current.Baudrate;
+            mb.Pipline.Bus.PortName = ComConfig.Current.Port;
+            mb.Pipline.Bus.sp.BaudRate = ComConfig.Current.Baudrate;
             mb.DcodeType = ComConfig.Current.DecodeType;
             mb.Open();
         }
@@ -64,7 +64,7 @@ namespace ModbusTest
 
         private void ButtonRead_Click(object sender, EventArgs e)
         {
-            if (mb.Bus.sp.IsOpen)
+            if (mb.Pipline.Bus.sp.IsOpen)
             {
                 mb.RegHoildingRead(1, 0, 20);//读取温度
             }
