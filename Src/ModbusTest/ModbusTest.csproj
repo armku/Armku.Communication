@@ -102,7 +102,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Armku.Communicatin\Armku.Communication.csproj">
       <Project>{c5177bba-78c2-4514-a812-0191fd932a28}</Project>

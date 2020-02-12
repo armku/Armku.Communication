@@ -39,7 +39,7 @@ namespace ModbusTest
             comboBox_DecodeType.SelectedIndex=ComConfig.Current.DecodeType;
         }
 
-        private void buttonOpen_Click(object sender, EventArgs e)
+        private void ButtonOpen_Click(object sender, EventArgs e)
         {
             ComConfig.Current.Port= comboBox_PortName.Text;
             ComConfig.Current.Baudrate = Convert.ToInt32(comboBox_BaudRate.Text);
@@ -52,17 +52,17 @@ namespace ModbusTest
             mb.Open();
         }
 
-        private void buttonClose_Click(object sender, EventArgs e)
+        private void ButtonClose_Click(object sender, EventArgs e)
         {
             mb.Close();
         }
 
-        private void timerRefresh_Tick(object sender, EventArgs e)
+        private void TimerRefresh_Tick(object sender, EventArgs e)
         {
             toolStripStatusLabel1.Text = mb.Status;
         }
 
-        private void buttonRead_Click(object sender, EventArgs e)
+        private void ButtonRead_Click(object sender, EventArgs e)
         {
             if (mb.Bus.sp.IsOpen)
             {
@@ -71,7 +71,7 @@ namespace ModbusTest
             textBoxValue.Text =mb.Zero[0].ToString();
         }
 
-        private void buttonWrite_Click(object sender, EventArgs e)
+        private void ButtonWrite_Click(object sender, EventArgs e)
         {
             mb.Zero[0] = Convert.ToSingle(textBoxValue.Text);
             mb.RegHoildingWrite(1, 0, 8);
@@ -80,7 +80,7 @@ namespace ModbusTest
         /// 通信历史
         /// </summary>
         FormHis form;
-        private void buttonHis_Click(object sender, EventArgs e)
+        private void ButtonHis_Click(object sender, EventArgs e)
         {
             form = new FormHis(ref mb)               ;
             form.Show();   

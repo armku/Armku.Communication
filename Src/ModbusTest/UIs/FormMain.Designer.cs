@@ -66,7 +66,7 @@
             // 
             // timerRefresh
             // 
-            this.timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
+            this.timerRefresh.Tick += new System.EventHandler(this.TimerRefresh_Tick);
             // 
             // comboBoxDev1_PortName
             // 
@@ -106,7 +106,7 @@
             this.buttonOpen.TabIndex = 6;
             this.buttonOpen.Text = "打开";
             this.buttonOpen.UseVisualStyleBackColor = true;
-            this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
+            this.buttonOpen.Click += new System.EventHandler(this.ButtonOpen_Click);
             // 
             // buttonClose
             // 
@@ -117,7 +117,7 @@
             this.buttonClose.TabIndex = 11;
             this.buttonClose.Text = "关闭";
             this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            this.buttonClose.Click += new System.EventHandler(this.ButtonClose_Click);
             // 
             // textBoxValue
             // 
@@ -137,7 +137,7 @@
             this.buttonRead.TabIndex = 12;
             this.buttonRead.Text = "读取";
             this.buttonRead.UseVisualStyleBackColor = true;
-            this.buttonRead.Click += new System.EventHandler(this.buttonRead_Click);
+            this.buttonRead.Click += new System.EventHandler(this.ButtonRead_Click);
             // 
             // buttonWrite
             // 
@@ -148,7 +148,7 @@
             this.buttonWrite.TabIndex = 14;
             this.buttonWrite.Text = "设置";
             this.buttonWrite.UseVisualStyleBackColor = true;
-            this.buttonWrite.Click += new System.EventHandler(this.buttonWrite_Click);
+            this.buttonWrite.Click += new System.EventHandler(this.ButtonWrite_Click);
             // 
             // comboBoxDecodeType
             // 
@@ -188,7 +188,7 @@
             this.buttonHis.TabIndex = 17;
             this.buttonHis.Text = "通信历史";
             this.buttonHis.UseVisualStyleBackColor = true;
-            this.buttonHis.Click += new System.EventHandler(this.buttonHis_Click);
+            this.buttonHis.Click += new System.EventHandler(this.ButtonHis_Click);
             // 
             // comboBox_BaudRate
             // 
