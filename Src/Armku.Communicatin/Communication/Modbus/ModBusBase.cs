@@ -150,9 +150,7 @@ namespace Armku.Communication.Modbus
         {
             Pipline.AddLast(this);
             Pipline.AddLast(new PackageModbus());
-            Pipline.AddLast(this.ComHis);
-            //Pipline.AddLast(Bus);
-            
+            Pipline.AddLast(this.ComHis);            
         }
         /// <summary>
         /// 输出继电器读取长度
@@ -349,7 +347,6 @@ namespace Armku.Communication.Modbus
         /// </summary>
         [Description("输出继电器,默认长度1000")]
         public Boolean[] RegCoil = new Boolean[1000];
-
         /// <summary>
         /// 处理发送数据
         /// </summary>
