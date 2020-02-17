@@ -150,7 +150,7 @@ namespace Armku.Communication.Iterface
             if (this.QueueWrite.Count == 0)
                 return;
 
-            var buf = this.QueueWrite.Dequeue();
+            this.QueueWrite.TryDequeue(out var buf);
 
             DealOutBuf(buf);
 
