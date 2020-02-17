@@ -1,5 +1,6 @@
 ﻿using Armku.Communication.Bus;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
@@ -131,7 +132,7 @@ namespace Armku.Communication.Iterface
         /// <summary>
         /// 发送队列，解决多线程冲突问题
         /// </summary>
-        private QueueSafe<Byte[]> QueueWrite = new QueueSafe<byte[]>();
+        private ConcurrentQueue <Byte[]> QueueWrite = new ConcurrentQueue<byte[]>();
         /// <summary>
         /// 通信发送线程
         /// </summary>
