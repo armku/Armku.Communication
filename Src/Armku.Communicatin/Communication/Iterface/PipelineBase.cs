@@ -13,6 +13,7 @@ namespace Armku.Communication.Iterface
         public PipelineBase()
         {
             trCommTx = new System.Threading.Thread(new System.Threading.ThreadStart(WorkMethod));
+            trCommTx.IsBackground = true;//设定为后台线程，前台退出，后台自动退出
             trCommTx.Start();
         }
 
