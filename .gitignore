@@ -110,3 +110,5 @@
 /ModbusTest/NewLife.Core.dll
 /ModbusTest/NewLife.Core.xml
 /ModbusTest/Log
+/Src/Armku.Communication.NmeaParser/obj
+/Src/Armku.Communication.NmeaParser/bin
