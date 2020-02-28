@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Armku</RootNamespace>
+    <Description>NmeaParser 基于.NET Standard2.0</Description>
+    <Version>0.1.2020.0228</Version>
+    <PackageReleaseNotes>NmeaParser 基于.NET Standard2.0</PackageReleaseNotes>
   </PropertyGroup>
 
 </Project>
