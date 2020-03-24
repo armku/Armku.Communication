@@ -114,6 +114,8 @@ namespace Armku.Communication.Bus
                 var cnt = sp.BytesToRead;
                 var databuf = new byte[cnt];
                 var cntread = sp.Read(databuf, 0, cnt);
+                RxCnt += cntread;
+                StatReceive.Increment(cntread);
                 return databuf;
             }
             else
@@ -152,7 +154,6 @@ namespace Armku.Communication.Bus
         public override byte[] DataInDeal(byte[] buf)
         {
             RxCnt += buf.Length;
-            StatReceive.Increment(buf.Length);
             return buf;
         }
         #endregion
