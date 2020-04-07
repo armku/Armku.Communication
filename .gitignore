@@ -112,3 +112,5 @@
 /ModbusTest/Log
 /Src/Armku.Communication.NmeaParser/obj
 /Src/Armku.Communication.NmeaParser/bin
+/Src/Armku.Core/obj
+/Src/Armku.Core/bin/Debug/netstandard2.0

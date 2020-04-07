@@ -7,11 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Armku.Communication", "Armk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModbusTest", "ModbusTest\ModbusTest.csproj", "{FE96FB85-EA12-4B7A-8753-1FB5F99A6219}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armku.Communication.NmeaParser", "Armku.Communication.NmeaParser\Armku.Communication.NmeaParser.csproj", "{93904A0C-3BB7-41A6-8CD0-7CE77FF36A14}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Armku.Communication.NmeaParser", "Armku.Communication.NmeaParser\Armku.Communication.NmeaParser.csproj", "{93904A0C-3BB7-41A6-8CD0-7CE77FF36A14}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nuget", "Nuget", "{C4EAE767-CABE-46E0-9FDD-D5F3CFC51BEA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{5D1C5F8C-3133-4F0F-9C5D-F07885B6F33D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Armku.Core", "Armku.Core\Armku.Core.csproj", "{DEBDB174-113B-486A-9BBC-B118BB4FDB49}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,10 @@ Global
 		{93904A0C-3BB7-41A6-8CD0-7CE77FF36A14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93904A0C-3BB7-41A6-8CD0-7CE77FF36A14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93904A0C-3BB7-41A6-8CD0-7CE77FF36A14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEBDB174-113B-486A-9BBC-B118BB4FDB49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEBDB174-113B-486A-9BBC-B118BB4FDB49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEBDB174-113B-486A-9BBC-B118BB4FDB49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEBDB174-113B-486A-9BBC-B118BB4FDB49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +45,7 @@ Global
 		{C5177BBA-78C2-4514-A812-0191FD932A28} = {C4EAE767-CABE-46E0-9FDD-D5F3CFC51BEA}
 		{FE96FB85-EA12-4B7A-8753-1FB5F99A6219} = {5D1C5F8C-3133-4F0F-9C5D-F07885B6F33D}
 		{93904A0C-3BB7-41A6-8CD0-7CE77FF36A14} = {C4EAE767-CABE-46E0-9FDD-D5F3CFC51BEA}
+		{DEBDB174-113B-486A-9BBC-B118BB4FDB49} = {C4EAE767-CABE-46E0-9FDD-D5F3CFC51BEA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1BEA383-A23B-408E-8887-89FF7E4F14B4}
