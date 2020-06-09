@@ -48,7 +48,6 @@ namespace ModbusTest
 
             mb.Pipline.Bus.PortName = ComConfig.Current.Port;
             mb.Pipline.Bus.sp.BaudRate = ComConfig.Current.Baudrate;
-            mb.DcodeType = ComConfig.Current.DecodeType;
             mb.Open();
         }
 
