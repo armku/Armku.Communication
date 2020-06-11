@@ -53,6 +53,10 @@ namespace Armku.Communication.Modbus
             float ret = 0;
             var byts = new Byte[4];
             var tmp = new Byte[4];
+
+            if (pos > values.Length - 2)
+                return 0;
+
             Buffer.BlockCopy(values, pos * 2, tmp, 0, 4);
             switch (dcodeType)
             {
