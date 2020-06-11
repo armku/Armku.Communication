@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Armku</RootNamespace>
-    <Version>0.2.2020.0609</Version>
-    <AssemblyVersion>0.1.2020.0301</AssemblyVersion>
-    <FileVersion>0.0.2020.0301</FileVersion>
+    <Version>0.3.2020.0611</Version>
+    <AssemblyVersion>0.3.2020.0611</AssemblyVersion>
+    <FileVersion>0.3.2020.0611</FileVersion>
     <Description>通信中间件 ModbusRTU 基于.NET Standard2.0 使用了 System.IO.Ports.SerialPort 跨平台，可用于多线程环境</Description>
     <Copyright>@www.armku.com</Copyright>
     <RepositoryUrl>https://github.com/armku/Armku.Communication</RepositoryUrl>
