@@ -441,3 +441,4 @@ healthchecksdb
 /ModbusTest/System.Xml.XDocument.dll
 /ModbusTest/System.Xml.ReaderWriter.dll
 /ModbusTest/System.Xml.XPath.XDocument.dll
+/ModbusTest/Config
