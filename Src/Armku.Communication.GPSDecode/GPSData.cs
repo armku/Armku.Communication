@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace Armku.Communication.GPSDecode
+namespace Armku.Communication.GPSDecoder
 {
     /// <summary>
     /// 位置数据

@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO.Ports;
 using System.Text;
 
-namespace Armku.Communication.GPSDecode
+namespace Armku.Communication.GPSDecoder
 {
     /// <summary>
     /// GPS解码
