@@ -76,20 +76,27 @@ namespace Armku.Communication.GPSDecoder
         /// <param name="e"></param>
         private void SpGps_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            var sp = sender as SerialPort;
-            var str = sp.ReadExisting();
-            //Console.WriteLine(str);
-            var buf = Encoding.ASCII.GetBytes(str);
-            if (buf.Length + BufPos >= BufIn.Length)
+            try
             {
-                BufPos = 0;
-                Console.WriteLine("接收缓冲区超长，接收复位");
-                return;
-            }
-            Buffer.BlockCopy(buf, 0, BufIn, BufPos, buf.Length);
-            BufPos += buf.Length;
+                var sp = sender as SerialPort;
+                var str = sp.ReadExisting();
+                //Console.WriteLine(str);
+                var buf = Encoding.ASCII.GetBytes(str);
+                if (buf.Length + BufPos >= BufIn.Length)
+                {
+                    BufPos = 0;
+                    Console.WriteLine("接收缓冲区超长，接收复位");
+                    return;
+                }
+                Buffer.BlockCopy(buf, 0, BufIn, BufPos, buf.Length);
+                BufPos += buf.Length;
 
-            DealData();
+                DealData();
+            }
+            catch
+            {
+
+            }
         }
         /// <summary>
         /// 处理数据
