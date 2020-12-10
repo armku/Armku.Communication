@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Armku.Core", "Armku.Core\Ar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Armku.Communication.GPSDecoder", "Armku.Communication.GPSDecode\Armku.Communication.GPSDecoder.csproj", "{DEAA7555-90DC-4C0E-A0B4-C52B9134B0A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPSTest", "ConsoleApp1\GPSTest.csproj", "{1929F61B-C465-4C24-BA94-7D1C5EC45C5E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{DEAA7555-90DC-4C0E-A0B4-C52B9134B0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DEAA7555-90DC-4C0E-A0B4-C52B9134B0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DEAA7555-90DC-4C0E-A0B4-C52B9134B0A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1929F61B-C465-4C24-BA94-7D1C5EC45C5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1929F61B-C465-4C24-BA94-7D1C5EC45C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1929F61B-C465-4C24-BA94-7D1C5EC45C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1929F61B-C465-4C24-BA94-7D1C5EC45C5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -53,6 +59,7 @@ Global
 		{93904A0C-3BB7-41A6-8CD0-7CE77FF36A14} = {C4EAE767-CABE-46E0-9FDD-D5F3CFC51BEA}
 		{DEBDB174-113B-486A-9BBC-B118BB4FDB49} = {C4EAE767-CABE-46E0-9FDD-D5F3CFC51BEA}
 		{DEAA7555-90DC-4C0E-A0B4-C52B9134B0A4} = {C4EAE767-CABE-46E0-9FDD-D5F3CFC51BEA}
+		{1929F61B-C465-4C24-BA94-7D1C5EC45C5E} = {5D1C5F8C-3133-4F0F-9C5D-F07885B6F33D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1BEA383-A23B-408E-8887-89FF7E4F14B4}

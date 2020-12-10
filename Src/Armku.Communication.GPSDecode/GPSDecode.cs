@@ -272,7 +272,7 @@ namespace Armku.Communication.GPSDecoder
             }
             else
             {
-                Console.WriteLine(str);
+               //Console.WriteLine(str);
             }
         }
         /// <summary>
