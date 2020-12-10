@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.2020.11111</Version>
+    <Version>1.0.2020.1210</Version>
     <Description>引用Armku.Communication.NmeaParser
 </Description>
     <PackageReleaseNotes>public GPSDecode spGps = new GPSDecode();
