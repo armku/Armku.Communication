@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>1.0.2020.1211</Version>
+    <Version>1.0.2020.1226</Version>
     <Description>引用Armku.Communication.NmeaParser
 </Description>
     <PackageReleaseNotes>public GPSDecode spGps = new GPSDecode();
@@ -10,6 +10,8 @@ spGps.spGps.PortName = Br2080bCfg.Current.PortNameGPS;
 spGps.Open();
 使用数据
 var 经度=spGps.gpsData.Longitude</PackageReleaseNotes>
+    <RepositoryUrl></RepositoryUrl>
+    <PackageProjectUrl>https://github.com/armku/Armku.Communication</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

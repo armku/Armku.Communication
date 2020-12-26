@@ -228,9 +228,13 @@ namespace Armku.Communication.GPSDecoder
                 }
             }
             str = str.Substring(0, str.Length - 2);//否则String.Split运行错误
+            //Console.WriteLine(str);
             ///数据有重复，抛弃
             if (sumhead != 1)
+            {
+                Console.WriteLine("GPS数据有重复，抛弃");
                 return;
+            }
             if(!IsCheckSumOK(str))
             {
                 Console.WriteLine("CheckSumError");
@@ -256,6 +260,15 @@ namespace Armku.Communication.GPSDecoder
             {
                 //GPS定位信息
                 //$GPGGA,064849.000,3617.5014,N,12017.8309,E,1,6,1.32,10.4,M,4.3,M,,*5B
+                //Console.WriteLine(str);
+                this.DecodeGGA(str);
+
+            }
+            else if (str.StartsWith("$GNGGA"))
+            {
+                //GPS定位信息
+                //$GPGGA,064849.000,3617.5014,N,12017.8309,E,1,6,1.32,10.4,M,4.3,M,,*5B
+                //Console.WriteLine(str);
                 this.DecodeGGA(str);
 
             }
